@@ -1,0 +1,154 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-screen layout */
+body, html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Calculator container */
+.calculator-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* Menu icon styling (History Button) */
+/* Menu icon styling (History Button) */
+.menu-icon {
+    position: fixed;
+    bottom: 10px; /* Adjust for closer to the bottom */
+    right: 10px;  /* Adjust for closer to the right */
+    font-size: 2.5em; /* Increase size if needed */
+    cursor: pointer;
+    color: #222; /* Change color if desired */
+    z-index: 2; /* Ensure it's above other elements */
+    background: none; /* Remove background */
+    border: none; /* No border */
+    padding: 0; /* Remove extra padding */
+    box-shadow: none; /* Remove any shadow */
+}
+
+/* Hover effect (optional) */
+.menu-icon:hover {
+    color: #555; /* Adjust hover color */
+}
+
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    bottom: 0;
+    right: -300px;
+    width: 300px;
+    height: 300px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1;
+    border-radius: 10px 10px 0 0;
+}
+
+.sidebar.active {
+    right: 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.close-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Calculator styling */
+.calculator {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.display {
+    width: 90%;
+    background-color: #222;
+    color: #fff;
+    text-align: right;
+    font-size: 2em;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 90%;
+}
+
+button {
+    font-size: 1.5em;
+    padding: 20px;
+    background: #f0a500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: #ffcc80;
+}
+
+button.equals {
+    grid-column: span 4;
+    background: #f57c00;
+}
+
+button.equals:hover {
+    background: #ffb74d;
+}
+
+/* Scrollbar styles for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #444;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
