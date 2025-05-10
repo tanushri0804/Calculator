@@ -1,154 +1,304 @@
-/* Basic reset */
+/* Base Styles */
+:root {
+    --primary-color: #4285f4;
+    --secondary-color: #34a853;
+    --accent-color: #ea4335;
+    --dark-color: #202124;
+    --light-color: #f8f9fa;
+    --button-color: #f1f3f4;
+    --operator-color: #dadce0;
+    --equals-color: #4285f4;
+    --function-color: #e8eaed;
+    --display-color: #202124;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* Full-screen layout */
 body, html {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
 }
 
-/* Calculator container */
+/* Calculator Container */
 .calculator-container {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
-}
-
-/* Menu icon styling (History Button) */
-/* Menu icon styling (History Button) */
-.menu-icon {
-    position: fixed;
-    bottom: 10px; /* Adjust for closer to the bottom */
-    right: 10px;  /* Adjust for closer to the right */
-    font-size: 2.5em; /* Increase size if needed */
-    cursor: pointer;
-    color: #222; /* Change color if desired */
-    z-index: 2; /* Ensure it's above other elements */
-    background: none; /* Remove background */
-    border: none; /* No border */
-    padding: 0; /* Remove extra padding */
-    box-shadow: none; /* Remove any shadow */
-}
-
-/* Hover effect (optional) */
-.menu-icon:hover {
-    color: #555; /* Adjust hover color */
-}
-
-
-/* Sidebar styling */
-.sidebar {
-    position: fixed;
-    bottom: 0;
-    right: -300px;
-    width: 300px;
-    height: 300px;
-    background-color: #333;
-    color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: right 0.3s;
-    padding: 20px;
-    overflow-y: auto;
-    z-index: 1;
-    border-radius: 10px 10px 0 0;
-}
-
-.sidebar.active {
-    right: 20px;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.close-icon {
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #fff;
-}
-
-/* Calculator styling */
+/* Calculator Styling */
 .calculator {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.display-container {
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .display {
-    width: 90%;
-    background-color: #222;
-    color: #fff;
+    width: 100%;
+    height: 80px;
+    padding: 15px;
     text-align: right;
-    font-size: 2em;
-    padding: 20px;
+    font-size: 2.5rem;
+    background-color: var(--display-color);
+    color: white;
+    border: none;
     border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.memory-indicator {
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Buttons Grid */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    width: 90%;
 }
 
 button {
-    font-size: 1.5em;
-    padding: 20px;
-    background: #f0a500;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 15px 0;
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: background 0.3s;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    background-color: var(--button-color);
+    color: var(--dark-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 button:hover {
-    background: #ffcc80;
+    opacity: 0.9;
 }
 
-button.equals {
-    grid-column: span 4;
-    background: #f57c00;
+.operator-btn {
+    background-color: var(--operator-color);
+    font-weight: bold;
 }
 
-button.equals:hover {
-    background: #ffb74d;
+.equals-btn {
+    background-color: var(--equals-color);
+    color: white;
+    grid-column: span 1;
 }
 
-/* Scrollbar styles for sidebar */
-.sidebar::-webkit-scrollbar {
-    width: 8px;
+.function-btn {
+    background-color: var(--function-color);
+    font-size: 1.1rem;
 }
 
-.sidebar::-webkit-scrollbar-track {
-    background: #444;
+.clear-btn {
+    background-color: #fbbc05;
+    color: white;
 }
 
-.sidebar::-webkit-scrollbar-thumb {
-    background: #888;
+/* Sidebar Styles */
+.menu-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.sidebar {
+    position: fixed;
+    bottom: 0;
+    right: -350px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    box-shadow: -5px 0 15px var(--shadow-color);
+    transition: right 0.3s ease;
+    z-index: 5;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    right: 20px;
+    bottom: 20px;
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-header h2 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+}
+
+.sidebar-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.close-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.close-icon:hover {
+    color: var(--accent-color);
+}
+
+.clear-history-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
+    box-shadow: none;
 }
 
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: #555;
+.clear-history-btn:hover {
+    background-color: #f5f5f5;
+    color: var(--accent-color);
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px;
+}
+
+.history-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item .expression {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.history-item .result {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .calculator {
+        max-width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 15px;
+    }
+    
+    .display {
+        height: 100px;
+        font-size: 3rem;
+    }
+    
+    button {
+        padding: 20px 0;
+        font-size: 1.5rem;
+    }
+    
+    .sidebar {
+        width: 100%;
+        right: -100%;
+        height: 60%;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .sidebar.active {
+        right: 0;
+        bottom: 0;
+    }
+    
+    .menu-icon {
+        bottom: 20px;
+        right: 20px;
+    }
 }
